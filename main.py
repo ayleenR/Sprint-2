@@ -1,0 +1,107 @@
+#Digital College Assistant
+#Written by Ayleen
+def calculate_study_hours(credit_hours):   #New fruitful function
+    study_hours = credit_hours ** 2        #Used in line 26
+    return study_hours
+
+your_name = input("Hello! What is your name? ")
+print("Welcome", your_name)
+print("This is your digital college assistant. Nice to meet you!")
+full_year = 365
+full_year //= 2
+print(full_year)        #gives the answer of the division
+print("A small reminder that fall and spring have around", full_year, "days")
+print("First, let's start by finding how many credits you are taking this "
+      "semester")
+amount_of_classes = int(input("How many classes do you have this term?: "))
+total_credit = 0
+for x in range(amount_of_classes):
+    credit_per_class = int(input("Enter credit for class: "))
+    total_credit += credit_per_class
+print("The total amount of credit is:",total_credit)
+print("This information will help keep your financial aid in check!" )
+print("Now let's find how much you will need to study per week")
+print("To find how long to study per week, enter credit hours of one class")
+credit_hours = int(input("Put credit hours of one class here: "))
+print("You should study for", calculate_study_hours(credit_hours), "hours")
+print("We also have other resources that you can use")
+print("For budget assistance: print '101' \nFor calculator: print '202'")
+your_decision = int(input("Put your decision here: "))
+if (your_decision == 101):
+    print("Awesome! Let me help. \nWhat is your budget?")
+    budget = float(input())
+    print("How much are you planning to spend?")
+    spending_amount = float(input())
+    print("Your budget is: $", format(budget))
+    print("You are planning to spend: $", format(spending_amount))
+    percent_kept = int((budget - spending_amount)/budget * 100)
+    print("You will keep: $", format(percent_kept, "d"),"%", sep="")#percentage
+    if (percent_kept >= 90):
+        print("You should be good to spend this! \nTreat yourself!")
+    elif (percent_kept >= 80):
+        print("You can spend it, although it is more reasonable to save it!")
+    elif (percent_kept >= 70):
+        print("Is it absolutely necessary? \nOtherwise, save it!")
+    elif (percent_kept <= 60):
+        print("Save it!")
+    else:
+        print("Sorry, there must be an error")
+elif (your_decision == 202)  #Goes back to the start and chooses calculator
+    print("Choose what you need: \n'1' to sum\n'2' to Subtract")
+    print("'3' to Multiply \n'4' to Divide")
+    choose_one = int(input("Put your choice here: "))
+    print("Choose two numbers to perform your chosen operation")
+    num1 = int(input("Put your first number here: "))
+    num2 = int(input("Put your second number here: "))
+    if (choose_one == 1):
+        print(num1 + num2)
+    elif (choose_one == 2):
+        print(num1 - num2)
+    elif (choose_one == 3):
+        print(num1 * num2)
+    elif (choose_one == 4):
+        print(num1/num2)
+    else:
+        print("Sorry, there must be an error!")
+while (your_decision != 101 or 202):
+    your_decision = 0
+    print("Sorry, there must be an error!")
+    break
+print("We can also provide you with a journal")
+print("Would you like to use a journal?")
+want_journal = input("Enter 'yes' or 'no': ")
+print("Do you want a new journal?")
+new_journal = input("Enter 'yes' or 'no': ")
+if (not want_journal == "yes" and not new_journal == "yes"):
+    print("That's okay! Feel free to use our other resources")
+elif (not want_journal == "yes" and new_journal == "yes"):
+    print("That's okay! Use it whenever you wish")
+elif (want_journal == "yes" and new_journal == "yes"):
+    journal_name = input("Name your journal: ")
+    todays_Date = input("Enter today's date: ")
+    full_Name = input("Enter your full name: ")
+    entry_journal = input("Enter your journal entry: ")
+
+    your_File = open(journal_name, 'w')  #Makes new file
+    your_File.write("Name: " + full_Name)
+    your_File.write("\nDate: " + todays_Date)
+    your_File.write("\nEntry: " + entry_journal)
+    your_File.write("\n")
+    your_File.close()
+    print("Great! It has been saved!")
+elif (want_journal == "yes" and new_journal == "no"):
+    todays_Date = input("Enter today's date: ")
+    full_Name = input("Enter your full name: ")
+    entry_journal = input("Enter your journal entry: ")
+
+    your_File = open(journal_name, 'a') #Saves to existing file
+    your_File.write("Name: " + full_Name)
+    your_File.write("\nDate: " + todays_Date)
+    your_File.write("\nEntry: " + entry_journal)
+    your_File.write("\n")
+    your_File.close()
+    print("Great! It has been saved!")
+else:
+    print("There must be an error somewhere!")
+print("Done!" * 5) #No matter what you choose, it will say 'Done!'five times
+print("Thank you" + " " + "so much for using the program!")
